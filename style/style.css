@@ -47,7 +47,7 @@ body{
 	font-size: 13px;
 	line-height: 23px;
 	color: #666;
-	background:#eeeeee;
+	/*background:#eeeeee;*/
 	padding-top: 45px;
 	-webkit-font-smoothing: antialiased;
 }
@@ -1407,7 +1407,7 @@ border:1px solid #eee;
 	.col-left{
 		width: 100%;
 		float: none;
-		margin-right: none;
+		margin-right: 0;
 	}
 	.col-right{
 		width: 100%;

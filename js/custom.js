@@ -1,373 +1,371 @@
 /* JS */
 
+function addSideNavigationEvents() {
 
+    $(".has_submenu > a").click(function (e) {
+        e.preventDefault();
+        var menu_li = $(this).parent("li");
+        var menu_ul = $(this).next("ul");
+
+        if (menu_li.hasClass("open")) {
+            menu_ul.slideUp(350);
+            menu_li.removeClass("open")
+        }
+        else {
+            $(".navi > li > ul").slideUp(350);
+            $(".navi > li").removeClass("open");
+            menu_ul.slideDown(350);
+            menu_li.addClass("open");
+        }
+    });
+
+}
 /* Navigation */
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-  $(window).resize(function()
-  {
-    if($(window).width() >= 765){
-      $(".sidebar .sidebar-inner").slideDown(350);
-    }
-    else{
-      $(".sidebar .sidebar-inner").slideUp(350); 
-    }
-  });
-
-});
-
-$(document).ready(function(){
-
-  $(".has_submenu > a").click(function(e){
-    e.preventDefault();
-    var menu_li = $(this).parent("li");
-    var menu_ul = $(this).next("ul");
-
-    if(menu_li.hasClass("open")){
-      menu_ul.slideUp(350);
-      menu_li.removeClass("open")
-    }
-    else{
-      $(".navi > li > ul").slideUp(350);
-      $(".navi > li").removeClass("open");
-      menu_ul.slideDown(350);
-      menu_li.addClass("open");
-    }
-  });
+    $(window).resize(function () {
+        if ($(window).width() >= 765) {
+            $(".sidebar .sidebar-inner").slideDown(350);
+        }
+        else {
+            $(".sidebar .sidebar-inner").slideUp(350);
+        }
+    });
 
 });
 
-$(document).ready(function(){
-  $(".sidebar-dropdown a").on('click',function(e){
-      e.preventDefault();
+$(document).ready(addSideNavigationEvents());
 
-      if(!$(this).hasClass("dropy")) {
-        // hide any open menus and remove all other classes
-        $(".sidebar .sidebar-inner").slideUp(350);
-        $(".sidebar-dropdown a").removeClass("dropy");
-        
-        // open our new menu and add the dropy class
-        $(".sidebar .sidebar-inner").slideDown(350);
-        $(this).addClass("dropy");
-      }
-      
-      else if($(this).hasClass("dropy")) {
-        $(this).removeClass("dropy");
-        $(".sidebar .sidebar-inner").slideUp(350);
-      }
-  });
+
+$(document).ready(function () {
+    $(".sidebar-dropdown a").on('click', function (e) {
+        e.preventDefault();
+
+        if (!$(this).hasClass("dropy")) {
+            // hide any open menus and remove all other classes
+            $(".sidebar .sidebar-inner").slideUp(350);
+            $(".sidebar-dropdown a").removeClass("dropy");
+
+            // open our new menu and add the dropy class
+            $(".sidebar .sidebar-inner").slideDown(350);
+            $(this).addClass("dropy");
+        }
+
+        else if ($(this).hasClass("dropy")) {
+            $(this).removeClass("dropy");
+            $(".sidebar .sidebar-inner").slideUp(350);
+        }
+    });
 
 });
 
 /* Widget close */
 
-$('.wclose').click(function(e){
-  e.preventDefault();
-  var $wbox = $(this).parent().parent().parent();
-  $wbox.hide(100);
+$('.wclose').click(function (e) {
+    e.preventDefault();
+    var $wbox = $(this).parent().parent().parent();
+    $wbox.fadeOut(100);
+    $("#articleContent").fadeOut('fast');
+    $(".mosaic-block").fadeIn('fast');
+
 });
 
 /* Widget minimize */
 
-  $('.wminimize').click(function(e){
+$('.wminimize').click(function (e) {
     e.preventDefault();
     var $wcontent = $(this).parent().parent().next('.widget-content');
-    if($wcontent.is(':visible')) 
-    {
-      $(this).children('i').removeClass('icon-chevron-up');
-      $(this).children('i').addClass('icon-chevron-down');
+    if ($wcontent.is(':visible')) {
+        $(this).children('i').removeClass('icon-chevron-up');
+        $(this).children('i').addClass('icon-chevron-down');
     }
-    else 
-    {
-      $(this).children('i').removeClass('icon-chevron-down');
-      $(this).children('i').addClass('icon-chevron-up');
-    }            
+    else {
+        $(this).children('i').removeClass('icon-chevron-down');
+        $(this).children('i').addClass('icon-chevron-up');
+    }
     $wcontent.toggle(500);
-  }); 
+});
 
 /* Calendar */
 
-  $(document).ready(function() {
-  
+$(document).ready(function () {
+
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
-    
+
     $('#calendar').fullCalendar({
-      header: {
-        left: 'prev',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay,next'
-      },
-      editable: true,
-      events: [
-        {
-          title: 'All Day Event',
-          start: new Date(y, m, 1)
+        header: {
+            left: 'prev',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay,next'
         },
-        {
-          title: 'Long Event',
-          start: new Date(y, m, d-5),
-          end: new Date(y, m, d-2)
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: new Date(y, m, d-3, 16, 0),
-          allDay: false
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: new Date(y, m, d+4, 16, 0),
-          allDay: false
-        },
-        {
-          title: 'Meeting',
-          start: new Date(y, m, d, 10, 30),
-          allDay: false
-        },
-        {
-          title: 'Lunch',
-          start: new Date(y, m, d, 12, 0),
-          end: new Date(y, m, d, 14, 0),
-          allDay: false
-        },
-        {
-          title: 'Birthday Party',
-          start: new Date(y, m, d+1, 19, 0),
-          end: new Date(y, m, d+1, 22, 30),
-          allDay: false
-        },
-        {
-          title: 'Click for Google',
-          start: new Date(y, m, 28),
-          end: new Date(y, m, 29),
-          url: 'http://google.com/'
-        }
-      ]
+        editable: true,
+        events: [
+            {
+                title: 'All Day Event',
+                start: new Date(y, m, 1)
+            },
+            {
+                title: 'Long Event',
+                start: new Date(y, m, d - 5),
+                end: new Date(y, m, d - 2)
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: new Date(y, m, d - 3, 16, 0),
+                allDay: false
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: new Date(y, m, d + 4, 16, 0),
+                allDay: false
+            },
+            {
+                title: 'Meeting',
+                start: new Date(y, m, d, 10, 30),
+                allDay: false
+            },
+            {
+                title: 'Lunch',
+                start: new Date(y, m, d, 12, 0),
+                end: new Date(y, m, d, 14, 0),
+                allDay: false
+            },
+            {
+                title: 'Birthday Party',
+                start: new Date(y, m, d + 1, 19, 0),
+                end: new Date(y, m, d + 1, 22, 30),
+                allDay: false
+            },
+            {
+                title: 'Click for Google',
+                start: new Date(y, m, 28),
+                end: new Date(y, m, 29),
+                url: 'http://google.com/'
+            }
+        ]
     });
-    
-  });
+
+});
 
 /* Progressbar animation */
 
-    setTimeout(function(){
+setTimeout(function () {
 
-        $('.progress-animated .bar').each(function() {
-            var me = $(this);
-            var perc = me.attr("data-percentage");
+    $('.progress-animated .bar').each(function () {
+        var me = $(this);
+        var perc = me.attr("data-percentage");
 
-            //TODO: left and right text handling
+        //TODO: left and right text handling
 
-            var current_perc = 0;
+        var current_perc = 0;
 
-            var progress = setInterval(function() {
-                if (current_perc>=perc) {
-                    clearInterval(progress);
-                } else {
-                    current_perc +=1;
-                    me.css('width', (current_perc)+'%');
-                }
+        var progress = setInterval(function () {
+            if (current_perc >= perc) {
+                clearInterval(progress);
+            } else {
+                current_perc += 1;
+                me.css('width', (current_perc) + '%');
+            }
 
-                me.text((current_perc)+'%');
+            me.text((current_perc) + '%');
 
-            }, 600);
+        }, 600);
 
-        });
+    });
 
-    },600);
+}, 600);
 
 /* Slider */
 
-    $(function() {
-        // Horizontal slider
-        $( "#master1, #master2" ).slider({
-            value: 60,
-            orientation: "horizontal",
-            range: "min",
-            animate: true
-        });
-
-        $( "#master4, #master3" ).slider({
-            value: 80,
-            orientation: "horizontal",
-            range: "min",
-            animate: true
-        });        
-
-        $("#master5, #master6").slider({
-            range: true,
-            min: 0,
-            max: 400,
-            values: [ 75, 200 ],
-            slide: function( event, ui ) {
-                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-            }
-        });
-
-
-        // Vertical slider 
-        $( "#eq > span" ).each(function() {
-            // read initial values from markup and remove that
-            var value = parseInt( $( this ).text(), 10 );
-            $( this ).empty().slider({
-                value: value,
-                range: "min",
-                animate: true,
-                orientation: "vertical"
-            });
-        });
+$(function () {
+    // Horizontal slider
+    $("#master1, #master2").slider({
+        value: 60,
+        orientation: "horizontal",
+        range: "min",
+        animate: true
     });
 
+    $("#master4, #master3").slider({
+        value: 80,
+        orientation: "horizontal",
+        range: "min",
+        animate: true
+    });
+
+    $("#master5, #master6").slider({
+        range: true,
+        min: 0,
+        max: 400,
+        values: [ 75, 200 ],
+        slide: function (event, ui) {
+            $("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
+        }
+    });
+
+
+    // Vertical slider
+    $("#eq > span").each(function () {
+        // read initial values from markup and remove that
+        var value = parseInt($(this).text(), 10);
+        $(this).empty().slider({
+            value: value,
+            range: "min",
+            animate: true,
+            orientation: "vertical"
+        });
+    });
+});
 
 
 /* Support */
 
-$(document).ready(function(){
-  $("#slist a").click(function(e){
-     e.preventDefault();
-     $(this).next('p').toggle(200);
-  });
+$(document).ready(function () {
+    $("#slist a").click(function (e) {
+        e.preventDefault();
+        $(this).next('p').toggle(200);
+    });
 });
 
 /* Scroll to Top */
 
 
-  $(".totop").hide();
+$(".totop").hide();
 
-  $(function(){
-    $(window).scroll(function(){
-      if ($(this).scrollTop()>300)
-      {
-        $('.totop').slideDown();
-      } 
-      else
-      {
-        $('.totop').slideUp();
-      }
+$(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.totop').slideDown();
+        }
+        else {
+            $('.totop').slideUp();
+        }
     });
 
     $('.totop a').click(function (e) {
-      e.preventDefault();
-      $('body,html').animate({scrollTop: 0}, 500);
+        e.preventDefault();
+        $('body,html').animate({scrollTop: 0}, 500);
     });
 
-  });
+});
 
 /* jQuery Notification (Gritter) */
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-  /* Auto notification */
+    /* Auto notification */
 
-  /*setTimeout(function() {
+    /*setTimeout(function() {
 
-            var unique_id = $.gritter.add({
-                // (string | mandatory) the heading of the notification
-                title: 'Howdy! User',
-                // (string | mandatory) the text inside the notification
-                text: 'Today you got some messages and new members. Please check it out!',
-                // (string | optional) the image to display on the left
-                image: './img/user-big.jpg',
-                // (bool | optional) if you want it to fade out on its own or just sit there
-                sticky: false,
-                // (int | optional) the time you want it to be alive for before fading out
-                time: '',
-                // (string | optional) the class name you want to apply to that specific message
-                class_name: 'gritter-custom'
+     var unique_id = $.gritter.add({
+     // (string | mandatory) the heading of the notification
+     title: 'Howdy! User',
+     // (string | mandatory) the text inside the notification
+     text: 'Today you got some messages and new members. Please check it out!',
+     // (string | optional) the image to display on the left
+     image: './img/user-big.jpg',
+     // (bool | optional) if you want it to fade out on its own or just sit there
+     sticky: false,
+     // (int | optional) the time you want it to be alive for before fading out
+     time: '',
+     // (string | optional) the class name you want to apply to that specific message
+     class_name: 'gritter-custom'
+     });
+
+     // You can have it return a unique id, this can be used to manually remove it later using
+     setTimeout(function () {
+     $.gritter.remove(unique_id, {
+     fade: true,
+     speed: 'slow'
+     });
+     }, 10000);
+
+     }, 4000);*/
+
+
+    /* On click notification. Refer ui.html file */
+
+    /* Regulat notification */
+    $(".notify").click(function (e) {
+
+        e.preventDefault();
+        var unique_id = $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'Howdy! User',
+            // (string | mandatory) the text inside the notification
+            text: 'Today you got some messages and new members. Please check it out!',
+            // (string | optional) the image to display on the left
+            image: './img/user-big.jpg',
+            // (bool | optional) if you want it to fade out on its own or just sit there
+            sticky: false,
+            // (int | optional) the time you want it to be alive for before fading out
+            time: '',
+            // (string | optional) the class name you want to apply to that specific message
+            class_name: 'gritter-custom'
+        });
+
+        // You can have it return a unique id, this can be used to manually remove it later using
+        setTimeout(function () {
+            $.gritter.remove(unique_id, {
+                fade: true,
+                speed: 'slow'
             });
+        }, 6000);
 
-            // You can have it return a unique id, this can be used to manually remove it later using
-            setTimeout(function () {
-                $.gritter.remove(unique_id, {
-                    fade: true,
-                    speed: 'slow'
-                });
-            }, 10000);
+    });
 
-  }, 4000);*/
+    /* Sticky notification */
+    $(".notify-sticky").click(function (e) {
 
-  
-  /* On click notification. Refer ui.html file */
+        e.preventDefault();
+        var unique_id = $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'Howdy! User',
+            // (string | mandatory) the text inside the notification
+            text: 'Today you got some messages and new members. Please check it out!',
+            // (string | optional) the image to display on the left
+            image: './img/user-big.jpg',
+            // (bool | optional) if you want it to fade out on its own or just sit there
+            sticky: false,
+            // (int | optional) the time you want it to be alive for before fading out
+            time: '',
+            // (string | optional) the class name you want to apply to that specific message
+            class_name: 'gritter-custom'
+        });
 
-  /* Regulat notification */
-  $(".notify").click(function(e){
+    });
 
-            e.preventDefault();
-            var unique_id = $.gritter.add({
-                // (string | mandatory) the heading of the notification
-                title: 'Howdy! User',
-                // (string | mandatory) the text inside the notification
-                text: 'Today you got some messages and new members. Please check it out!',
-                // (string | optional) the image to display on the left
-                image: './img/user-big.jpg',
-                // (bool | optional) if you want it to fade out on its own or just sit there
-                sticky: false,
-                // (int | optional) the time you want it to be alive for before fading out
-                time: '',
-                // (string | optional) the class name you want to apply to that specific message
-                class_name: 'gritter-custom'
-            });
+    /* Without image notification */
+    $(".notify-without-image").click(function (e) {
 
-            // You can have it return a unique id, this can be used to manually remove it later using
-            setTimeout(function () {
-                $.gritter.remove(unique_id, {
-                    fade: true,
-                    speed: 'slow'
-                });
-            }, 6000);
+        e.preventDefault();
+        var unique_id = $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'Howdy! User',
+            // (string | mandatory) the text inside the notification
+            text: 'Today you got some messages and new members. Please check it out!',
+            // (bool | optional) if you want it to fade out on its own or just sit there
+            sticky: false,
+            // (int | optional) the time you want it to be alive for before fading out
+            time: '',
+            // (string | optional) the class name you want to apply to that specific message
+            class_name: 'gritter-custom'
+        });
 
-  });
+    });
 
-  /* Sticky notification */
-  $(".notify-sticky").click(function(e){
+    /* Remove notification */
 
-            e.preventDefault();
-            var unique_id = $.gritter.add({
-                // (string | mandatory) the heading of the notification
-                title: 'Howdy! User',
-                // (string | mandatory) the text inside the notification
-                text: 'Today you got some messages and new members. Please check it out!',
-                // (string | optional) the image to display on the left
-                image: './img/user-big.jpg',
-                // (bool | optional) if you want it to fade out on its own or just sit there
-                sticky: false,
-                // (int | optional) the time you want it to be alive for before fading out
-                time: '',
-                // (string | optional) the class name you want to apply to that specific message
-                class_name: 'gritter-custom'
-            });
+    $(".notify-remove").click(function () {
 
-  });
-
-  /* Without image notification */
-  $(".notify-without-image").click(function(e){
-
-            e.preventDefault();
-            var unique_id = $.gritter.add({
-                // (string | mandatory) the heading of the notification
-                title: 'Howdy! User',
-                // (string | mandatory) the text inside the notification
-                text: 'Today you got some messages and new members. Please check it out!',
-                // (bool | optional) if you want it to fade out on its own or just sit there
-                sticky: false,
-                // (int | optional) the time you want it to be alive for before fading out
-                time: '',
-                // (string | optional) the class name you want to apply to that specific message
-                class_name: 'gritter-custom'
-            });
-
-  });
-
-/* Remove notification */
-
-    $(".notify-remove").click(function(){
-
-      $.gritter.removeAll();
-      return false;
+        $.gritter.removeAll();
+        return false;
 
     });
 
@@ -377,25 +375,23 @@ $(document).ready(function(){
 
 /* Date picker */
 
-  $(function() {
+$(function () {
     $('#datetimepicker1').datetimepicker({
-      pickTime: false
+        pickTime: false
     });
-  });
+});
 
 
-
-   $(function() {
+$(function () {
     $('#datetimepicker2').datetimepicker({
-      pickDate: false
+        pickDate: false
     });
-  });
+});
 
 
-  $(function() {
-    $( "#todaydate" ).datepicker();
-  });
-
+$(function () {
+    $("#todaydate").datepicker();
+});
 
 
 /* Bootstrap toggle */
@@ -408,7 +404,7 @@ $('.toggle-button').toggleButtons({
 });
 
 $('.warning-toggle-button').toggleButtons({
-    width:130,
+    width: 130,
     style: {
         // Accepted values ["primary", "danger", "info", "success", "warning"] or nothing
         enabled: "success",
@@ -449,52 +445,52 @@ $('.modal').appendTo($('body'));
 /* Pretty Photo for Gallery*/
 
 jQuery("a[class^='prettyPhoto']").prettyPhoto({
-overlay_gallery: false, social_tools: false
+    overlay_gallery: false, social_tools: false
 });
 
 
 /* Notification box */
 
 
-$('.slide-box-head').click(function() {
-    var $slidebtn=$(this);
-    var $slidebox=$(this).parent().parent();
-    if($slidebox.css('right')=="-252px"){
-      $slidebox.animate({
-        right:0
-      },500);
-      $slidebtn.children("i").removeClass().addClass("icon-chevron-right");
+$('.slide-box-head').click(function () {
+    var $slidebtn = $(this);
+    var $slidebox = $(this).parent().parent();
+    if ($slidebox.css('right') == "-252px") {
+        $slidebox.animate({
+            right: 0
+        }, 500);
+        $slidebtn.children("i").removeClass().addClass("icon-chevron-right");
     }
-    else{
-      $slidebox.animate({
-        right:-252
-      },500);
-      $slidebtn.children("i").removeClass().addClass("icon-chevron-left");
+    else {
+        $slidebox.animate({
+            right: -252
+        }, 500);
+        $slidebtn.children("i").removeClass().addClass("icon-chevron-left");
     }
-}); 
-
-
-$('.sclose').click(function(e){
-  e.preventDefault();
-  var $wbox = $(this).parent().parent().parent();
-  $wbox.hide(0);
 });
 
 
-  $('.sminimize').click(function(e){
+$('.sclose').click(function (e) {
+    e.preventDefault();
+    var $wbox = $(this).parent().parent().parent();
+    $wbox.hide(0);
+
+});
+
+
+$('.sminimize').click(function (e) {
     e.preventDefault();
     var $wcontent = $(this).parent().parent().next('.slide-content');
-    if($wcontent.is(':visible')) 
-    {
-      $(this).children('i').removeClass('icon-chevron-down');
-      $(this).children('i').addClass('icon-chevron-up');
+    if ($wcontent.is(':visible')) {
+        $(this).children('i').removeClass('icon-chevron-down');
+        $(this).children('i').addClass('icon-chevron-up');
     }
-    else 
-    {
-      $(this).children('i').removeClass('icon-chevron-up');
-      $(this).children('i').addClass('icon-chevron-down');
-    }            
+    else {
+        $(this).children('i').removeClass('icon-chevron-up');
+        $(this).children('i').addClass('icon-chevron-down');
+    }
     $wcontent.toggle(0);
-  }); 
+});
+
 
   

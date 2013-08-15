@@ -29,7 +29,7 @@ footer {
     float:left;
     position:relative;
     overflow:hidden;
-    width:290px;
+    width:308px;
     height:240px;
     border:1px solid #fff;
     -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.5);
@@ -46,7 +46,7 @@ footer {
     background:#111;
 }
 .mosaic-backdrop img {
-    width:290px;
+    width:308px;
     height:240px;
 }
 .mosaic-overlay {
@@ -117,4 +117,35 @@ a.brand:link,a.brand:visited  {
     color:#333333 !important;
     font-size: 200%;
 }
+
+
+/* widget article content */
+#articleContent .widget-content .padd img {
+    width:100%;
+    margin-bottom: 15px;
+    /*display:inline;*/
+    /*float: right;*/
+}
+/*#articleContent {*/
+    /*max-width: 800px;*/
+/*}*/
+
+/*fixing max width of teh entire page*/
+body, .navbar {
+    max-width: 1200px;
+    margin: auto;
+    background: #F3F5F6;
+}
+
+.content {
+    background: #EEE;
+}
+
+.navbar {
+    height:40px;
+}
+body {
+    padding-top: 40px;
+}
+
 

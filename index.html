@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -49,6 +49,7 @@
 
 <body>
 
+
 <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
         <div class="container">
@@ -59,7 +60,7 @@
                 <span class="icon-bar"></span>
             </a>
             <!-- Site name for smallar screens -->
-            <a href="index.html" class="brand"><img src="img/paperboy.png"/> Paper Boy</span></a>
+            <a href="index.html" class="brand"><img src="img/paperboy.png"/> Paperboy</span></a>
 
             <!-- Navigation starts -->
             <div class="nav-collapse collapse">
@@ -88,48 +89,15 @@
                     <!-- Comment button with number of latest comments count -->
                     <li class="dropdown dropdown-big">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                            <i class="icon-comments"></i> New <span class="badge badge-info">5</span>
+                            <i class="icon-th-large"></i> New <span class="badge badge-info">5</span>
                         </a>
 
-                        <ul class="dropdown-menu">
-                            <li>
-                                <!-- Heading - h5 -->
-                                <h5><i class="icon-comments"></i> Chats</h5>
-                                <!-- Use hr tag to add border -->
-                                <hr/>
-                            </li>
-                            <li>
-                                <!-- List item heading h6 -->
-                                <a href="#">Hi :)</a> <span class="label label-warning pull-right">10:42</span>
-
-                                <div class="clearfix"></div>
-                                <hr/>
-                            </li>
-                            <li>
-                                <a href="#">How are you?</a> <span class="label label-warning pull-right">20:42</span>
-
-                                <div class="clearfix"></div>
-                                <hr/>
-                            </li>
-                            <li>
-                                <a href="#">What are you doing?</a> <span
-                                    class="label label-warning pull-right">14:42</span>
-
-                                <div class="clearfix"></div>
-                                <hr/>
-                            </li>
-                            <li>
-                                <div class="drop-foot">
-                                    <a href="#">View All</a>
-                                </div>
-                            </li>
-                        </ul>
                     </li>
 
                     <!-- Message button with number of latest messages count-->
                     <li class="dropdown dropdown-big">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                            <i class="icon-envelope-alt"></i> Pins <span class="badge badge-info">2</span>
+                            <i class="icon-bookmark"></i> Pins <span class="badge badge-info">2</span>
                         </a>
 
                         <ul class="dropdown-menu">
@@ -225,72 +193,30 @@
                 <form class="form-inline">
                     <div class="input-append row-fluid">
                         <input type="text" class="span8" placeholder="Search" style="border:none !important;">
-                        <button type="submit" class="btn btn-info" style="border:none;height:30px;" >Search</button>
+                        <button type="submit" class="btn btn-info" style="border:none;height:30px;">Search</button>
                     </div>
                 </form>
             </div>
 
             <!--- Sidebar navigation -->
             <!-- If the main navigation has sub navigation, then add the class "has_submenu" to "li" of main navigation. -->
-            <ul class="navi">
-                <!-- Menu with sub menu -->
-                <li class="has_submenu nlightblue">
+
+
+            <ul class="navi" ng-controller="PhoneListCtrl">
+                <li class="has_submenu nlightblue" ng-repeat="channel in channels">
                     <a href="#">
-                        <!-- Menu name with icon -->
-                        <i class="icon-th"></i> Tech
-                        <!-- Icon for dropdown -->
+                        <i class="icon-th"></i>
+                        {{channel.channelName}}
                         <span class="pull-right"><i class="icon-angle-right"></i></span>
                     </a>
-
                     <ul>
-                        <li><a href="Feed1.html">Feed #1</a></li>
-                        <li><a href="Feed2.html">Feed #2</a></li>
+                        <li ng-repeat='source in channel.sources'><a href="#">{{source.subsName}}</a></li>
                     </ul>
+
                 </li>
-                <li class="has_submenu nlightblue">
-                    <a href="#">
-                        <!-- Menu name with icon -->
-                        <i class="icon-th"></i> Photography
-                        <!-- Icon for dropdown -->
-                        <span class="pull-right"><i class="icon-angle-right"></i></span>
-                    </a>
-
-                    <ul>
-                        <li><a href="Feed1.html">Feed #1</a></li>
-                        <li><a href="Feed2.html">Feed #2</a></li>
-                    </ul>
-                </li>
-                <li class="has_submenu nlightblue">
-                    <a href="#">
-                        <!-- Menu name with icon -->
-                        <i class="icon-th"></i> Design
-                        <!-- Icon for dropdown -->
-                        <span class="pull-right"><i class="icon-angle-right"></i></span>
-                    </a>
-
-                    <ul>
-                        <li><a href="Feed1.html">Feed #1</a></li>
-                        <li><a href="Feed2.html">Feed #2</a></li>
-                    </ul>
-                </li>
-                <li class="has_submenu nlightblue">
-                    <a href="#">
-                        <!-- Menu name with icon -->
-                        <i class="icon-th"></i> Startup
-                        <!-- Icon for dropdown -->
-                        <span class="pull-right"><i class="icon-angle-right"></i></span>
-                    </a>
-
-                    <ul>
-                        <li><a href="Feed1.html">Feed #1</a></li>
-                        <li><a href="Feed2.html">Feed #2</a></li>
-                    </ul>
-                </li>
-
-
             </ul>
         </div>
-
+        <div class="clearfix"></div>
     </div>
 
     <!-- Sidebar ends -->
@@ -325,177 +251,52 @@
 
         <div class="matter">
             <div class="container-fluid">
-
                 <div class="row-fluid">
-
                     <!-- Content -->
-                    <div id="mosaic-list">
+                    <div id="mosaic-list" ng-controller="ArticleListCtrl">
 
-                        <div class="mosaic-block bar">
+                        <div class="mosaic-block bar" ng-repeat="article in articles">
                             <div class="mosaic-overlay">
                                 <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div> 
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
+                                    <div class="articleTitle">{{article.title}}</div>
                                     <div class="stars"></div>
                                 </div>
                             </div>
                             <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-
-
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
+                                <div ng-bind-html-unsafe="article.content" class="articleContent"></div>
+                                <!--<img src="img/pb.png" alt=""/>-->
                             </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
                         </div>
-
-
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-                        <div class="mosaic-block bar">
-                            <div class="mosaic-overlay">
-                                <div class="details">
-                                    Sample <br/>
-                                    This is a caption of the sample image
-                                    <div class="stars"></div>
-                                </div>
-                            </div>
-                            <div class="mosaic-backdrop">
-                                <img src="img/pb.png" alt=""/></div>
-                        </div>
-
-
                     </div>
                 </div>
+                <div class="row-fluid">
+                    <!-- Widget -->
+                    <div class="widget wlightblue" id="articleContent"
+                         style="overflow:scroll;z-index: 10; display:none">
+                        <!-- Widget head -->
+                        <div class="widget-head">
+                            <div class="pull-left" id="artTitle"></div>
+                            <div class="widget-icons pull-right">
+                                <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
 
+                        <!-- Widget content -->
+                        <div class="widget-content">
+                            <div class="padd" id="artContent">
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!-- Widget ends -->
+
+                    </div>
+
+
+                </div>
             </div>
+            <div style="clear:both;"></div>
         </div>
 
         <!-- Matter ends -->
@@ -508,75 +309,6 @@
 </div>
 <!-- Content ends -->
 
-
-<!-- Notification box starts -->
-<!--<div class="slide-box">
-
-    &lt;!&ndash; Notification box head &ndash;&gt;
-    <div class="slide-box-head bred">
-        &lt;!&ndash; Title &ndash;&gt;
-        <div class="pull-left">Notification Box</div>
-        &lt;!&ndash; Icon &ndash;&gt;
-        <div class="slide-icons pull-right">
-            <a href="#" class="sminimize"><i class="icon-chevron-down"></i></a>
-            <a href="#" class="sclose"><i class="icon-remove"></i></a>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-
-    <div class="slide-content">
-
-        &lt;!&ndash; It is default bootstrap nav tabs. See official bootstrap doc for doubts &ndash;&gt;
-        <ul class="nav nav-tabs">
-            &lt;!&ndash; Tab links &ndash;&gt;
-            <li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-bar-chart"></i></a></li>
-            <li><a href="#tab2" data-toggle="tab"><i class="icon-phone"></i></a></li>
-            <li><a href="#tab3" data-toggle="tab"><i class="icon-comments"></i></a></li>
-        </ul>
-
-        &lt;!&ndash; Tab content &ndash;&gt;
-
-        <div class="tab-content">
-
-            <div class="tab-pane active" id="tab1">
-
-                &lt;!&ndash; Graph #1 &ndash;&gt;
-                <div class="slide-data">
-                    <div class="slide-data-text">Today Earnings</div>
-                    <div class="slide-data-result">$5,0000 <i class="icon-arrow-up red"></i> </div>
-                    <div class="clearfix"></div>
-                    <hr />
-                    <span id="todayspark4" class="spark"></span>
-                </div>
-
-                &lt;!&ndash; Graph #2 &ndash;&gt;
-                <div class="slide-data">
-                    <div class="slide-data-text">Yesterday Earnings</div>
-                    <div class="slide-data-result">$4,6000 <i class="icon-arrow-down green"></i> </div>
-                    <div class="clearfix"></div>
-                    <hr />
-                    <span id="todayspark5" class="spark"></span>
-                </div>
-
-            </div>
-
-            <div class="tab-pane" id="tab2">
-                <h5>Have some content here.</h5>
-                <p>Aliquam dui libero, pharetra nec venenatis in, scelerisque quis odio. In hac habitasse platea dictumst. Etiam porta placerat turpis, eget fermentum neque egestas at. Vestibulum ullamcorper, augue a sollicitudin vestibulum, orci purus semper felis, lobortis consequat nisi nunc eu enim. </p>
-            </div>
-
-            <div class="tab-pane" id="tab3">
-                <h5>Have some content here.</h5>
-                <p>Aliquam dui libero, pharetra nec venenatis in, scelerisque quis odio. In hac habitasse platea dictumst. Etiam porta placerat turpis, eget fermentum neque egestas at. Vestibulum ullamcorper, augue a sollicitudin vestibulum, orci purus semper felis, lobortis consequat nisi nunc eu enim.</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>-->
-
-<!-- Notification box ends -->
 
 <!-- Scroll to top -->
 <!--<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>-->
@@ -614,16 +346,20 @@
 <!-- Bootstrap Toggle -->
 <script src="js/filter.js"></script>
 <!-- Filter for support page -->
-<script src="js/custom.js"></script>
-<!-- Custom codes -->
+
 <script src="js/charts.js"></script>
 <!-- Custom chart codes -->
 <script src="js/mosaic.min.js"></script>
 <script src="js/jquery.raty.min.js"></script>
+<script src="js/jquery.simplemodal.1.4.4.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/custom.js"></script>
+<!-- Custom codes -->
 <!-- Custom chart codes -->
 
 <script>
-    $(function (){
+    $(function () {
         $('.stars').raty();
         $('.bar').mosaic({
             animation: 'slide'
