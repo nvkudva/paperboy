@@ -1,76 +1,47 @@
 {
-"channel_list": [
-{
-"channelName": "Food & Dining",
-"channelId": "channelId/2606",
-"channelImage": "food_channel.png",
-"description": ""
-},
-{
-"channelName": "Business",
-"channelId": "channelId/2603",
-"channelImage": "business_channel.png",
-"description": ""
-},
-{
-"channelName": "Sports",
-"channelId": "channelId/2604",
-"channelImage": "sports_channel.png",
-"description": ""
-},
-{
-"channelName": "Living",
-"channelId": "channelId/2605",
-"channelImage": "living_channel.png",
-"description": ""
-},
-{
-"channelName": "Travel",
-"channelId": "channelId/2607",
-"channelImage": "travel_channel.png",
-"description": ""
-},
-{
-"channelName": "Style",
-"channelId": "channelId/2608",
-"channelImage": "style_channel.png",
-"description": ""
-},
-{
-"channelName": "Design",
-"channelId": "channelId/2",
-"channelImage": "design_channel.png",
-"description": ""
-},
-{
-"channelName": "Tech",
-"channelId": "channelId/1",
-"channelImage": "tech_channel.png",
-"description": ""
-},
-{
-"channelName": "News",
-"channelId": "channelId/3",
-"channelImage": "news_channel.png",
-"description": ""
-},
-{
-"channelName": "Auto",
-"channelId": "channelId/4",
-"channelImage": "auto_channel.png",
-"description": ""
-},
-{
-"channelName": "Books",
-"channelId": "channelId/2609",
-"channelImage": "books_channel.png",
-"description": ""
-},
-{
-"channelName": "Photography",
-"channelId": "channelId/5590",
-"channelImage": "photography_channel.png",
-"description": ""
-}
-]
+    "channel_list": [
+        {
+            "channelName": "Tech",
+            "channelId": "channelId/1",
+            "channelImage": "tech_channel.png",
+            "description": ""
+        },
+        {
+            "channelName": "Food & Dining",
+            "channelId": "channelId/2606",
+            "channelImage": "food_channel.png",
+            "description": ""
+        },
+        {
+            "channelName": "Business",
+            "channelId": "channelId/2603",
+            "channelImage": "business_channel.png",
+            "description": ""
+        },
+        {
+            "channelName": "Sports",
+            "channelId": "channelId/2604",
+            "channelImage": "sports_channel.png",
+            "description": ""
+        },
+        {
+            "channelName": "Design",
+            "channelId": "channelId/2",
+            "channelImage": "design_channel.png",
+            "description": ""
+        },
+
+        {
+            "channelName": "News",
+            "channelId": "channelId/3",
+            "channelImage": "news_channel.png",
+            "description": ""
+        },
+        {
+            "channelName": "Photography",
+            "channelId": "channelId/5590",
+            "channelImage": "photography_channel.png",
+            "description": ""
+        }
+    ]
 }

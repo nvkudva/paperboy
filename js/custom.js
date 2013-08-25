@@ -68,6 +68,7 @@ $('.wclose').click(function (e) {
     $wbox.fadeOut(100);
     $("#articleContent").fadeOut('fast');
     $(".mosaic-block").fadeIn('fast');
+    $(".container-fluid").css("padding","4px");
 
 });
 
@@ -492,5 +493,34 @@ $('.sminimize').click(function (e) {
     $wcontent.toggle(0);
 });
 
+//$(".sidebar-dropdown").bind('click', function() {
+//    var state =  $('.sidebar-inner').css("display");
+//    if (state==="block") {
+//        $('body').css("overflow","hidden");
+//        console.log("nav visible") ;
+//    }
+//    else {
+//        $('body').css("overflow","scroll");
+//        console.log("nav hidden") ;
+//    }
+//});
 
+
+$('body').on('scroll', function() {
+    console.log("scrolling") ;
+    var state =  $('.sidebar-inner').css("display");
+    if (state==="block") {
+        $('body').css("overflow","hidden");
+        console.log("nav visible") ;
+    }
+    else {
+        $('body').css("overflow","scroll");
+        console.log("nav hidden") ;
+    }
+});
+
+$('.sidebar-inner').on("show", function(){
+    //
+    // alert("aple");
+})
   

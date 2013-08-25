@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <!-- Title and other stuffs -->
     <title>PaperBoy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
@@ -186,9 +187,7 @@
         <div class="sidebar-dropdown"><a href="#">Navigation</a></div>
 
         <div class="sidebar-inner">
-
-
-            <!-- Search form -->
+            <!--&lt;!&ndash; Search form &ndash;&gt;
             <div class="sidebar-widget">
                 <form class="form-inline">
                     <div class="input-append row-fluid">
@@ -196,7 +195,7 @@
                         <button type="submit" class="btn btn-info" style="border:none;height:30px;">Search</button>
                     </div>
                 </form>
-            </div>
+            </div>-->
 
             <!--- Sidebar navigation -->
             <!-- If the main navigation has sub navigation, then add the class "has_submenu" to "li" of main navigation. -->
@@ -225,13 +224,12 @@
     <div class="mainbar">
 
         <!-- Page heading -->
-        <div class="page-head">
+        <div class="page-head" style="display:none;">
             <!-- Page heading -->
             <h2 class="pull-left">Technology
                 <!-- page meta -->
                 <span class="page-meta">#apple #gogreen #robotics #engadget </span>
             </h2>
-
 
             <!-- Breadcrumb -->
             <div class="bread-crumb pull-right">
@@ -248,13 +246,11 @@
 
 
         <!-- Matter -->
-
         <div class="matter">
             <div class="container-fluid">
                 <div class="row-fluid">
                     <!-- Content -->
                     <div id="mosaic-list" ng-controller="ArticleListCtrl">
-
                         <div class="mosaic-block bar" ng-repeat="article in articles">
                             <div class="mosaic-overlay">
                                 <div class="details">
@@ -290,10 +286,7 @@
                             <div class="clearfix"></div>
                         </div>
                         <!-- Widget ends -->
-
                     </div>
-
-
                 </div>
             </div>
             <div style="clear:both;"></div>

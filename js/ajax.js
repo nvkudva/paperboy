@@ -13,7 +13,7 @@ function PhoneListCtrl($scope, $http) {
             matches[0].sources.push(sourceList[i]);
         }
         console.log( $scope.channels);
-        setTimeout(addSideNavigationEvents,500);
+        setTimeout(addSideNavigationEvents,1000);
     });
 
 
@@ -24,7 +24,7 @@ function ArticleListCtrl($scope, $http) {
     $http.get('js/data/article.json').success(function(data) {
         $scope.articles = data.articleList;
     });
-    setTimeout(addMosaicEvents,500);
+    setTimeout(addMosaicEvents,1000);
 
 }
 
@@ -35,9 +35,11 @@ function addMosaicEvents(){
         animation: 'slide'
     });
     $(".mosaic-block").click(function(e) {
-        $(".mosaic-block").fadeOut('fast');
+        $(".container-fluid").css("padding","0px");
+        $(".mosaic-block").hide();
         $("#articleContent").fadeIn('fast');
-        $("#articleContent #artContent").html($(this).find(".articleContent").html());//.replace("</p>","").replace("<p>",""));
+
+        $("#articleContent #artContent").html($(this).find(".articleContent").html().replace("</p>","").replace("<p>",""));
         $("#articleContent #artTitle").html($(this).find(".articleTitle").html());
     });
 

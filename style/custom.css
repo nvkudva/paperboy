@@ -29,12 +29,18 @@ footer {
     float:left;
     position:relative;
     overflow:hidden;
-    width:308px;
+    width:320px;
     height:240px;
-    border:1px solid #fff;
+    border:4px solid #fff;
     -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.5);
     -moz-box-shadow:0 1px 3px rgba(0,0,0,0.5);
     box-shadow:0 1px 3px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+.mosaic-backdrop img {
+    width:320px;
+    height:240px;
 }
 
 .mosaic-backdrop {
@@ -43,24 +49,21 @@ footer {
     top:0;
     height:100%;
     width:100%;
-    background:#111;
+    background:#CCC;
 }
-.mosaic-backdrop img {
-    width:308px;
-    height:240px;
-}
+
 .mosaic-overlay {
     display:none;
     z-index:5;
     position:absolute;
     width:100%;
     height:100%;
-    background:#111;
+    background:#CCC;
 }
 .bar .mosaic-overlay {
     bottom:-70px;
     height:150px;
-    background:rgba(10,10,10,.8);
+    background:rgba(80, 80, 80, 0.6)
 }
 .mosaic-overlay .details {
     font-family:Arial, Helvetica, sans-serif;
@@ -75,6 +78,34 @@ footer {
     width:400px;
     height:300px;
 }
+
+@media (max-width: 767px) {
+    .mosaic-block {
+        width:100%;
+        height:240px;
+        border-left: 8px solid #fff;
+        border-right:8px solid #fff;
+    }
+
+    .mosaic-backdrop img {
+        width:100%;
+        height:100%;
+    }
+
+    .page-head {
+        display: none;
+    }
+
+
+
+    body {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+}
+
+/*mosaic ends*/
 
 
 .sidebar-inner{
@@ -120,15 +151,31 @@ a.brand:link,a.brand:visited  {
 
 
 /* widget article content */
-#articleContent .widget-content .padd img {
-    width:100%;
-    margin-bottom: 15px;
-    /*display:inline;*/
-    /*float: right;*/
+#articleContent{
+    margin-top: 0px;
+
+
 }
-/*#articleContent {*/
-    /*max-width: 800px;*/
-/*}*/
+
+#articleContent .widget-content {
+    border:0px solid white !important;
+}
+#articleContent .widget-content .padd img {
+    width: 100%;
+    max-width:600px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    display:inline;
+    float: right;
+
+}
+
+
+#artTitle{
+    width: 90%;
+    font-family: 'Roboto Condensed' !important;
+}
+
 
 /*fixing max width of teh entire page*/
 body, .navbar {
@@ -137,15 +184,19 @@ body, .navbar {
     background: #F3F5F6;
 }
 
-.content {
-    background: #EEE;
+.mainbar .matter {
+    padding:0px;
+}
+.container {
+    height:45px;
 }
 
-.navbar {
-    height:40px;
+.container-fluid {
+   padding:4px;
 }
-body {
-    padding-top: 40px;
+
+.content {
+    background: #EEE;
 }
 
 
